@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-text-randomizer"
+description = "A simple text randomizer for ComfyUI that can generate random and surprising results"
+version = 1.0.0"
+license = { file = "LICENSE" }
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/nosiu/comfyui-text-randomizer"
+
+[tool.comfy]
+PublisherId = "nosiu"
+DisplayName = "comfyui-text-randomizer"
+Icon = ""
