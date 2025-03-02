@@ -3,7 +3,8 @@
 
 A simple text randomizer for ComfyUI that can generate random and surprising results.
 
-[[ PUT IMAGE HERE]] 
+![image](https://github.com/user-attachments/assets/b4e98518-bc24-4ef1-80fc-c038e0eeb94e)
+
 
 ## Custom nodes
 <sub>[About](#comfyui-text-randomizer-100) | [Custom nodes](#custom-nodes) | [Workflows](#workflows) | [Tips](#tips)</sub>
@@ -43,12 +44,12 @@ You can find example workflows in the `/workflows` folder.
 ### workflow.json
 Demonstrates how to achieve similar text outputs in different ways, either by grouping separate topics and concatenating texts or putting everything into one node.
 
-[[ PUT IMAGE HERE]] 
+![Zrzut ekranu 2025-03-02 200221](https://github.com/user-attachments/assets/c9d222b1-3dfe-43b1-a8e3-b4ca2080b13d)
 
 ### workflow2.json
 Shows how to randomize two text nodes and return text from either one node or another.
 
-[[ PUT IMAGE HERE]] 
+![Zrzut ekranu 2025-03-02 203735](https://github.com/user-attachments/assets/e90f5d26-d23e-4fc4-b4d0-70eb3cf95d9e)
 
 ## Tips
 <sub>[About](#comfyui-text-randomizer-100) | [Custom nodes](#custom-nodes) | [Workflows](#workflows) | [Tips](#tips)</sub>
