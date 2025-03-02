@@ -1,0 +1,1990 @@
+{
+  "last_node_id": 1577,
+  "last_link_id": 3548,
+  "nodes": [
+    {
+      "id": 1541,
+      "type": "CLIPTextEncode",
+      "pos": {
+        "0": 60,
+        "1": -110
+      },
+      "size": {
+        "0": 210,
+        "1": 54
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3424
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3527,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            3436
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Positive Prompts",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 1540,
+      "type": "KSampler",
+      "pos": {
+        "0": 390,
+        "1": -130
+      },
+      "size": {
+        "0": 315,
+        "1": 474
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 3427
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 3436
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 3435
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 3428
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            3429
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        81076402696843,
+        "randomize",
+        20,
+        8,
+        "euler",
+        "normal",
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 1545,
+      "type": "CLIPTextEncode",
+      "pos": {
+        "0": 60,
+        "1": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 96
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3432
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            3435
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Negative Prompts",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "bad quality, ugly, deformed, low res"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 1555,
+      "type": "Reroute",
+      "pos": {
+        "0": -185.62387084960938,
+        "1": 184.18748474121094
+      },
+      "size": [
+        90.4,
+        26
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 3547,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            3526,
+            3527
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 1542,
+      "type": "EmptyLatentImage",
+      "pos": {
+        "0": 60,
+        "1": -290
+      },
+      "size": {
+        "0": 226.6180877685547,
+        "1": 106
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            3428
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 1543,
+      "type": "VAEDecode",
+      "pos": {
+        "0": 733,
+        "1": -61
+      },
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 3429
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 3430
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3431
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1544,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 757,
+        "1": -447
+      },
+      "size": {
+        "0": 776.2886962890625,
+        "1": 863.4190063476562
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3431
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 1538,
+      "type": "ShowText",
+      "pos": {
+        "0": -8,
+        "1": 184
+      },
+      "size": {
+        "0": 337.1260986328125,
+        "1": 252.23208618164062
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3526,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "ShowText"
+      },
+      "widgets_values": [
+        "",
+        "cartoon,  man, surprised, standing on the busy street in city, dynamic angle, simple background"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 1564,
+      "type": "ConcatText",
+      "pos": {
+        "0": -1435.4990234375,
+        "1": -303.516357421875
+      },
+      "size": {
+        "0": 210,
+        "1": 54
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text1",
+          "type": "STRING",
+          "link": 3528,
+          "widget": {
+            "name": "text1"
+          }
+        },
+        {
+          "name": "text2",
+          "type": "STRING",
+          "link": 3529,
+          "widget": {
+            "name": "text2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3548
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConcatText"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1539,
+      "type": "CheckpointLoaderSimple",
+      "pos": {
+        "0": -328,
+        "1": -129
+      },
+      "size": {
+        "0": 317.883056640625,
+        "1": 106.47866821289062
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            3427
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3424,
+            3432
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            3430
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "Juggernaut_X_RunDiffusion_Hyper.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 1576,
+      "type": "RandomizeText",
+      "pos": {
+        "0": -1872.521728515625,
+        "1": 139.67515563964844
+      },
+      "size": [
+        400.13629383315083,
+        124.25364257332262
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3540
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomizeText"
+      },
+      "widgets_values": [
+        "sitting on the grass under a tree overlooking the mountains",
+        571942818288524,
+        "randomize"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 1557,
+      "type": "RandomizeText",
+      "pos": {
+        "0": -1873.2958984375,
+        "1": -438.8770446777344
+      },
+      "size": {
+        "0": 386.8968811035156,
+        "1": 134.02008056640625
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3528
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomizeText"
+      },
+      "widgets_values": [
+        "[raw photo|realistic|anime|cartoon]",
+        1094367922456323,
+        "randomize"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1559,
+      "type": "RandomizeText",
+      "pos": {
+        "0": -1873.2958984375,
+        "1": -248.877197265625
+      },
+      "size": {
+        "0": 393.25177001953125,
+        "1": 125.10658264160156
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3529
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomizeText"
+      },
+      "widgets_values": [
+        " [man|girl], [happy|angry|surprised]",
+        1048538631223636,
+        "randomize"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1563,
+      "type": "RandomizeText",
+      "pos": {
+        "0": -1873.4990234375,
+        "1": 341.4834289550781
+      },
+      "size": {
+        "0": 394.50482177734375,
+        "1": 153.2019500732422
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3544
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomizeText"
+      },
+      "widgets_values": [
+        "[wide shot|from above|dynamic angle], [detailed|simple] background",
+        202689871172503,
+        "randomize"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1574,
+      "type": "Note",
+      "pos": {
+        "0": -1004.521728515625,
+        "1": -409.3249816894531
+      },
+      "size": [
+        591.5566665585122,
+        128.15980316826705
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "The result of this group will randomize styles: raw photo, realistic, anime, or cartoon.\nThen, the subject will be either a man or a girl, with an expression of happy, angry, or surprised.\n\nNext, it will randomly use:\n\"standing on a busy street in the city\" or \"sitting on the grass under a tree overlooking the mountains.\"\n\nAt the end, it adds camera and background prompts."
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 1575,
+      "type": "RandomTextChoice",
+      "pos": {
+        "0": -1328.521728515625,
+        "1": 40.67523193359375
+      },
+      "size": [
+        277.20001220703125,
+        102
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text1",
+          "type": "STRING",
+          "link": 3539,
+          "widget": {
+            "name": "text1"
+          }
+        },
+        {
+          "name": "text2",
+          "type": "STRING",
+          "link": 3540,
+          "widget": {
+            "name": "text2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3543
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomTextChoice"
+      },
+      "widgets_values": [
+        "",
+        "",
+        549579819080192,
+        "randomize"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 1561,
+      "type": "RandomizeText",
+      "pos": {
+        "0": -1875.521728515625,
+        "1": -61.32476043701172
+      },
+      "size": {
+        "0": 398.185302734375,
+        "1": 130.74755859375
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3539
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomizeText"
+      },
+      "widgets_values": [
+        "standing on the busy street in city",
+        960893777396891,
+        "randomize"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 1566,
+      "type": "ConcatText",
+      "pos": {
+        "0": -979.521728515625,
+        "1": -88.32476806640625
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text1",
+          "type": "STRING",
+          "link": 3548,
+          "widget": {
+            "name": "text1"
+          }
+        },
+        {
+          "name": "text2",
+          "type": "STRING",
+          "link": 3543,
+          "widget": {
+            "name": "text2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3545
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConcatText"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1577,
+      "type": "ConcatText",
+      "pos": {
+        "0": -727,
+        "1": 378
+      },
+      "size": [
+        246.93227771403372,
+        115.91511138975659
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text1",
+          "type": "STRING",
+          "link": 3545,
+          "widget": {
+            "name": "text1"
+          }
+        },
+        {
+          "name": "text2",
+          "type": "STRING",
+          "link": 3544,
+          "widget": {
+            "name": "text2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3547
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConcatText"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      2149,
+      925,
+      0,
+      926,
+      0,
+      "IMAGE"
+    ],
+    [
+      2150,
+      925,
+      1,
+      926,
+      1,
+      "MASK"
+    ],
+    [
+      2151,
+      924,
+      1,
+      927,
+      0,
+      "CLIP"
+    ],
+    [
+      2152,
+      924,
+      1,
+      928,
+      0,
+      "CLIP"
+    ],
+    [
+      2153,
+      941,
+      0,
+      929,
+      0,
+      "MODEL"
+    ],
+    [
+      2154,
+      943,
+      0,
+      929,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      2155,
+      943,
+      1,
+      929,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      2156,
+      943,
+      3,
+      929,
+      3,
+      "LATENT"
+    ],
+    [
+      2157,
+      931,
+      0,
+      930,
+      0,
+      "IMAGE"
+    ],
+    [
+      2158,
+      926,
+      5,
+      930,
+      1,
+      "INT"
+    ],
+    [
+      2159,
+      926,
+      6,
+      930,
+      2,
+      "INT"
+    ],
+    [
+      2160,
+      929,
+      0,
+      931,
+      0,
+      "LATENT"
+    ],
+    [
+      2161,
+      924,
+      2,
+      931,
+      1,
+      "VAE"
+    ],
+    [
+      2162,
+      925,
+      0,
+      932,
+      0,
+      "IMAGE"
+    ],
+    [
+      2163,
+      930,
+      0,
+      932,
+      1,
+      "IMAGE"
+    ],
+    [
+      2164,
+      926,
+      3,
+      932,
+      3,
+      "INT"
+    ],
+    [
+      2165,
+      926,
+      4,
+      932,
+      4,
+      "INT"
+    ],
+    [
+      2166,
+      932,
+      0,
+      933,
+      0,
+      "IMAGE"
+    ],
+    [
+      2167,
+      935,
+      0,
+      934,
+      0,
+      "IMAGE"
+    ],
+    [
+      2168,
+      926,
+      1,
+      935,
+      0,
+      "MASK"
+    ],
+    [
+      2169,
+      934,
+      0,
+      936,
+      0,
+      "IMAGE"
+    ],
+    [
+      2170,
+      934,
+      0,
+      937,
+      0,
+      "IMAGE"
+    ],
+    [
+      2171,
+      940,
+      0,
+      938,
+      0,
+      "IMAGE"
+    ],
+    [
+      2172,
+      926,
+      0,
+      939,
+      0,
+      "*"
+    ],
+    [
+      2173,
+      925,
+      0,
+      940,
+      0,
+      "*"
+    ],
+    [
+      2174,
+      924,
+      0,
+      941,
+      0,
+      "MODEL"
+    ],
+    [
+      2175,
+      942,
+      0,
+      941,
+      1,
+      "INPAINT_PATCH"
+    ],
+    [
+      2176,
+      943,
+      2,
+      941,
+      2,
+      "LATENT"
+    ],
+    [
+      2177,
+      927,
+      0,
+      943,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      2178,
+      928,
+      0,
+      943,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      2179,
+      924,
+      2,
+      943,
+      2,
+      "VAE"
+    ],
+    [
+      2180,
+      939,
+      0,
+      943,
+      3,
+      "IMAGE"
+    ],
+    [
+      2181,
+      936,
+      0,
+      943,
+      4,
+      "MASK"
+    ],
+    [
+      2182,
+      939,
+      0,
+      944,
+      0,
+      "IMAGE"
+    ],
+    [
+      2264,
+      1002,
+      1,
+      1005,
+      0,
+      "CLIP"
+    ],
+    [
+      2265,
+      1002,
+      1,
+      1006,
+      0,
+      "CLIP"
+    ],
+    [
+      2266,
+      1019,
+      0,
+      1007,
+      0,
+      "MODEL"
+    ],
+    [
+      2267,
+      1021,
+      0,
+      1007,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      2268,
+      1021,
+      1,
+      1007,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      2269,
+      1021,
+      3,
+      1007,
+      3,
+      "LATENT"
+    ],
+    [
+      2270,
+      1009,
+      0,
+      1008,
+      0,
+      "IMAGE"
+    ],
+    [
+      2271,
+      1004,
+      5,
+      1008,
+      1,
+      "INT"
+    ],
+    [
+      2272,
+      1004,
+      6,
+      1008,
+      2,
+      "INT"
+    ],
+    [
+      2273,
+      1007,
+      0,
+      1009,
+      0,
+      "LATENT"
+    ],
+    [
+      2274,
+      1002,
+      2,
+      1009,
+      1,
+      "VAE"
+    ],
+    [
+      2276,
+      1008,
+      0,
+      1010,
+      1,
+      "IMAGE"
+    ],
+    [
+      2277,
+      1004,
+      3,
+      1010,
+      3,
+      "INT"
+    ],
+    [
+      2278,
+      1004,
+      4,
+      1010,
+      4,
+      "INT"
+    ],
+    [
+      2281,
+      1004,
+      1,
+      1013,
+      0,
+      "MASK"
+    ],
+    [
+      2285,
+      1004,
+      0,
+      1017,
+      0,
+      "*"
+    ],
+    [
+      2286,
+      1003,
+      0,
+      1018,
+      0,
+      "*"
+    ],
+    [
+      2287,
+      1002,
+      0,
+      1019,
+      0,
+      "MODEL"
+    ],
+    [
+      2288,
+      1020,
+      0,
+      1019,
+      1,
+      "INPAINT_PATCH"
+    ],
+    [
+      2289,
+      1021,
+      2,
+      1019,
+      2,
+      "LATENT"
+    ],
+    [
+      2290,
+      1005,
+      0,
+      1021,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      2291,
+      1006,
+      0,
+      1021,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      2292,
+      1002,
+      2,
+      1021,
+      2,
+      "VAE"
+    ],
+    [
+      2293,
+      1017,
+      0,
+      1021,
+      3,
+      "IMAGE"
+    ],
+    [
+      2294,
+      1014,
+      0,
+      1021,
+      4,
+      "MASK"
+    ],
+    [
+      2295,
+      1017,
+      0,
+      1022,
+      0,
+      "IMAGE"
+    ],
+    [
+      2296,
+      1003,
+      0,
+      1001,
+      0,
+      "IMAGE"
+    ],
+    [
+      2297,
+      1013,
+      0,
+      1014,
+      0,
+      "IMAGE"
+    ],
+    [
+      2298,
+      1001,
+      0,
+      1004,
+      0,
+      "IMAGE"
+    ],
+    [
+      2303,
+      1025,
+      0,
+      1026,
+      0,
+      "IMAGE"
+    ],
+    [
+      2304,
+      1026,
+      0,
+      1004,
+      1,
+      "MASK"
+    ],
+    [
+      2305,
+      1001,
+      0,
+      1010,
+      0,
+      "IMAGE"
+    ],
+    [
+      2306,
+      1010,
+      0,
+      1016,
+      0,
+      "IMAGE"
+    ],
+    [
+      2309,
+      1001,
+      1,
+      1029,
+      0,
+      "MASK"
+    ],
+    [
+      2310,
+      1029,
+      0,
+      1025,
+      0,
+      "MASK"
+    ],
+    [
+      2485,
+      1106,
+      0,
+      1108,
+      0,
+      "FSMCROPPER"
+    ],
+    [
+      2486,
+      1106,
+      0,
+      1109,
+      0,
+      "FSMCROPPER"
+    ],
+    [
+      2487,
+      1107,
+      0,
+      1110,
+      0,
+      "IMAGE"
+    ],
+    [
+      2488,
+      1107,
+      1,
+      1111,
+      0,
+      "IMAGE"
+    ],
+    [
+      2509,
+      1108,
+      0,
+      1107,
+      0,
+      "IMAGE"
+    ],
+    [
+      2510,
+      1108,
+      1,
+      1107,
+      1,
+      "CROPINFO"
+    ],
+    [
+      2511,
+      1109,
+      1,
+      1107,
+      2,
+      "CROPINFO"
+    ],
+    [
+      2512,
+      1107,
+      0,
+      1122,
+      1,
+      "IMAGE"
+    ],
+    [
+      2514,
+      1108,
+      1,
+      1122,
+      2,
+      "CROPINFO"
+    ],
+    [
+      2515,
+      1122,
+      0,
+      1123,
+      0,
+      "IMAGE"
+    ],
+    [
+      2520,
+      1124,
+      0,
+      1125,
+      0,
+      "IMAGE"
+    ],
+    [
+      2521,
+      1124,
+      1,
+      1125,
+      1,
+      "CROPINFO"
+    ],
+    [
+      2522,
+      1106,
+      0,
+      1124,
+      0,
+      "FSMCROPPER"
+    ],
+    [
+      2524,
+      1122,
+      0,
+      1124,
+      1,
+      "IMAGE"
+    ],
+    [
+      2525,
+      1125,
+      0,
+      1126,
+      0,
+      "IMAGE"
+    ],
+    [
+      2526,
+      1125,
+      1,
+      1127,
+      0,
+      "IMAGE"
+    ],
+    [
+      2527,
+      1128,
+      0,
+      1129,
+      0,
+      "IMAGE"
+    ],
+    [
+      2528,
+      1128,
+      1,
+      1129,
+      1,
+      "CROPINFO"
+    ],
+    [
+      2530,
+      1106,
+      0,
+      1128,
+      0,
+      "FSMCROPPER"
+    ],
+    [
+      2532,
+      1129,
+      0,
+      1130,
+      0,
+      "IMAGE"
+    ],
+    [
+      2533,
+      1129,
+      1,
+      1131,
+      0,
+      "IMAGE"
+    ],
+    [
+      2538,
+      1132,
+      0,
+      1133,
+      0,
+      "IMAGE"
+    ],
+    [
+      2539,
+      1132,
+      0,
+      1128,
+      1,
+      "IMAGE"
+    ],
+    [
+      2542,
+      1128,
+      1,
+      1134,
+      2,
+      "CROPINFO"
+    ],
+    [
+      2543,
+      1134,
+      0,
+      1135,
+      0,
+      "IMAGE"
+    ],
+    [
+      2546,
+      1138,
+      0,
+      1125,
+      2,
+      "CROPINFO"
+    ],
+    [
+      2548,
+      1122,
+      0,
+      1132,
+      0,
+      "IMAGE"
+    ],
+    [
+      2549,
+      1125,
+      0,
+      1132,
+      1,
+      "IMAGE"
+    ],
+    [
+      2550,
+      1124,
+      1,
+      1132,
+      2,
+      "CROPINFO"
+    ],
+    [
+      2551,
+      1138,
+      0,
+      1140,
+      0,
+      "*"
+    ],
+    [
+      2552,
+      1140,
+      0,
+      1129,
+      2,
+      "CROPINFO"
+    ],
+    [
+      2555,
+      1141,
+      0,
+      1108,
+      1,
+      "IMAGE"
+    ],
+    [
+      2556,
+      1142,
+      0,
+      1109,
+      1,
+      "IMAGE"
+    ],
+    [
+      2557,
+      1141,
+      0,
+      1122,
+      0,
+      "IMAGE"
+    ],
+    [
+      2670,
+      1109,
+      1,
+      1138,
+      0,
+      "*"
+    ],
+    [
+      2672,
+      1132,
+      0,
+      1134,
+      0,
+      "IMAGE"
+    ],
+    [
+      2673,
+      1129,
+      0,
+      1134,
+      1,
+      "IMAGE"
+    ],
+    [
+      2826,
+      1301,
+      2,
+      1303,
+      1,
+      "VAE"
+    ],
+    [
+      2831,
+      1301,
+      1,
+      1307,
+      0,
+      "CLIP"
+    ],
+    [
+      2834,
+      1301,
+      2,
+      1304,
+      1,
+      "VAE"
+    ],
+    [
+      3057,
+      1393,
+      0,
+      1392,
+      0,
+      "UPSCALE_MODEL"
+    ],
+    [
+      3059,
+      1395,
+      0,
+      1392,
+      1,
+      "IMAGE"
+    ],
+    [
+      3060,
+      1392,
+      0,
+      1397,
+      0,
+      "IMAGE"
+    ],
+    [
+      3061,
+      1397,
+      0,
+      1398,
+      0,
+      "IMAGE"
+    ],
+    [
+      3309,
+      1499,
+      0,
+      1503,
+      0,
+      "STRING"
+    ],
+    [
+      3310,
+      1500,
+      0,
+      1503,
+      1,
+      "STRING"
+    ],
+    [
+      3311,
+      1503,
+      0,
+      1504,
+      0,
+      "STRING"
+    ],
+    [
+      3312,
+      1501,
+      0,
+      1504,
+      1,
+      "STRING"
+    ],
+    [
+      3314,
+      1504,
+      0,
+      1505,
+      0,
+      "STRING"
+    ],
+    [
+      3315,
+      1502,
+      0,
+      1505,
+      1,
+      "STRING"
+    ],
+    [
+      3344,
+      1505,
+      0,
+      1508,
+      0,
+      "STRING"
+    ],
+    [
+      3345,
+      1510,
+      0,
+      1508,
+      1,
+      "STRING"
+    ],
+    [
+      3346,
+      1508,
+      0,
+      1509,
+      0,
+      "STRING"
+    ],
+    [
+      3347,
+      1511,
+      0,
+      1509,
+      1,
+      "STRING"
+    ],
+    [
+      3401,
+      1509,
+      0,
+      1532,
+      0,
+      "STRING"
+    ],
+    [
+      3424,
+      1539,
+      1,
+      1541,
+      0,
+      "CLIP"
+    ],
+    [
+      3427,
+      1539,
+      0,
+      1540,
+      0,
+      "MODEL"
+    ],
+    [
+      3428,
+      1542,
+      0,
+      1540,
+      3,
+      "LATENT"
+    ],
+    [
+      3429,
+      1540,
+      0,
+      1543,
+      0,
+      "LATENT"
+    ],
+    [
+      3430,
+      1539,
+      2,
+      1543,
+      1,
+      "VAE"
+    ],
+    [
+      3431,
+      1543,
+      0,
+      1544,
+      0,
+      "IMAGE"
+    ],
+    [
+      3432,
+      1539,
+      1,
+      1545,
+      0,
+      "CLIP"
+    ],
+    [
+      3435,
+      1545,
+      0,
+      1540,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      3436,
+      1541,
+      0,
+      1540,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      3526,
+      1555,
+      0,
+      1538,
+      0,
+      "STRING"
+    ],
+    [
+      3527,
+      1555,
+      0,
+      1541,
+      1,
+      "STRING"
+    ],
+    [
+      3528,
+      1557,
+      0,
+      1564,
+      0,
+      "STRING"
+    ],
+    [
+      3529,
+      1559,
+      0,
+      1564,
+      1,
+      "STRING"
+    ],
+    [
+      3539,
+      1561,
+      0,
+      1575,
+      0,
+      "STRING"
+    ],
+    [
+      3540,
+      1576,
+      0,
+      1575,
+      1,
+      "STRING"
+    ],
+    [
+      3543,
+      1575,
+      0,
+      1566,
+      1,
+      "STRING"
+    ],
+    [
+      3544,
+      1563,
+      0,
+      1577,
+      1,
+      "STRING"
+    ],
+    [
+      3545,
+      1566,
+      0,
+      1577,
+      0,
+      "STRING"
+    ],
+    [
+      3547,
+      1577,
+      0,
+      1555,
+      0,
+      "*"
+    ],
+    [
+      3548,
+      1564,
+      0,
+      1566,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Randomize text with groups",
+      "bounding": [
+        -1905,
+        -540,
+        1544,
+        1168
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.620921323059155,
+      "offset": [
+        2019.9913874179324,
+        631.990306683603
+      ]
+    },
+    "groupNodes": {}
+  },
+  "version": 0.4
+}
