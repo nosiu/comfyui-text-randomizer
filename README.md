@@ -1,4 +1,4 @@
-# ComfyUI Text Randomizer 1.0.0
+# ComfyUI Text Randomizer 1.0.1
 <sub>[About](#comfyui-text-randomizer-100) | [Custom nodes](#custom-nodes) | [Workflows](#workflows) | [Tips](#tips)</sub>
 
 A simple text randomizer for ComfyUI that can generate random and surprising results.
