@@ -120,6 +120,9 @@ app.registerExtension({
     // RANDOMIZE TEXT
     // ===================================
     if (nodeType?.comfyClass == "RandomizeTextWithCheck") {
+      const INFO_TEXT_HEIGHT = 60
+      const INFO_TEXT_MARGIN_TOP = "-4px"
+      
       const onNodeCreated = nodeType.prototype.onNodeCreated;
       nodeType.prototype.onNodeCreated = function () {
         const r = onNodeCreated ? onNodeCreated.apply(this, arguments) : undefined
@@ -128,6 +131,10 @@ app.registerExtension({
         infoTextWidget.element.readOnly = true
         infoTextWidget.value = ""
 
+        // Pin info_text to a fixed height so only the input widget stretches on resize
+        infoTextWidget.computeSize = () => [0, INFO_TEXT_HEIGHT]
+        infoTextWidget.element.style.marginTop = INFO_TEXT_MARGIN_TOP
+        
         if (textwWidget) {
           const callback = textwWidget.element.onkeyup
           textwWidget.element.onkeyup = (e) => {
